@@ -2,6 +2,17 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_story, only: [:edit, :update, :destroy]
 
+  def create
+    @story = current_user.stories.new(story_params)
+    @story.status = 'published' if params[:publish]
+    
+    if @story.save
+      published_or_draft
+    else
+      render :new
+    end
+  end
+
   def index
     @stories = current_user.stories.order(created_at: :desc)
   end
@@ -10,10 +21,12 @@ class StoriesController < ApplicationController
   end
 
   def update
+    @story.status = 'published' if params[:publish]
+
     if @story.update(story_params) 
-      redirect_to stories_path, notice: '編輯成功'
+      published_or_draft
     else
-      render :edit
+     render :edit
     end
   end
 
@@ -26,16 +39,6 @@ class StoriesController < ApplicationController
     @story = current_user.stories.new
   end
 
-  def create
-    @story = current_user.stories.new(story_params)
-    
-    if @story.save
-      redirect_to stories_path, notice: '新增成功'
-    else
-      render :new
-    end
-  end
-
   private
     def find_story
       @story = current_user.stories.find(params[:id])
@@ -43,5 +46,13 @@ class StoriesController < ApplicationController
 
     def story_params
       params.require(:story).permit(:title, :content)
+    end
+
+    def published_or_draft
+      if params[:publish]
+        redirect_to stories_path, notice: '成功發佈文章'
+      else
+        redirect_to edit_story_path(@story), notice: '已儲存草稿'
+      end
     end
 end
