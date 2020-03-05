@@ -7,8 +7,14 @@
       <%= form.label :content, '文章內容' %>
       <%= form.text_area :content, class: 'textarea', rows: '10' %>
     </div>
+
     <div class="field">
-      <%= form.submit '儲存草稿', name: 'save_as_draft', class: 'button is-light'%>
-      <%= form.submit '發佈文章', name: 'publish', class: 'button is-primary'%>
+      <% if story.published? %>
+        <%= form.submit '更新文章', name: 'save_as_draft', class: 'button is-light'%>
+        <%= form.submit '下架文章', name: 'unpublish', class: 'button is-danger'%>
+      <% else %>
+        <%= form.submit '儲存草稿', name: 'save_as_draft', class: 'button is-light'%>
+        <%= form.submit '發佈文章', name: 'publish', class: 'button is-primary'%>
+      <% end %>
     </div>
-  <% end %>
+<% end %>
