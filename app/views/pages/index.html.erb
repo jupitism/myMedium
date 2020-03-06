@@ -1,0 +1,168 @@
+<!-- top -->
+<section class="columns">
+<!-- top left -->
+  <section class="column ">
+
+		<article>
+			<figure class="image">
+				<img src="https://fakeimg.pl/350x150/f0f0f0/">
+			</figure>
+			<h2 class="title is-4">Title 3</h2>
+			<h3 class="subtitle is-6">Subtitle 5</h3>
+			<footer>
+				<p>Author</p>
+				<p>Date</p>
+			</footer>
+		</article>
+
+  </section>
+<!-- top left -->
+<!-- top center -->
+  <section class="column">
+
+    <article class="media">
+      <figure class="image">
+				<img src="https://fakeimg.pl/100x100/f0f0f0/">
+			</figure>
+      <div class="media-content">
+        <h2 class="title is-5">Title 3</h2>
+        <footer>
+          <p>Author</p>
+          <p>Date</p>
+        </footer> 
+      </div>
+		</article>
+
+		<article class="media">
+      <figure class="image">
+				<img src="https://fakeimg.pl/100x100/f0f0f0/">
+			</figure>
+      <div class="media-content">
+        <h2 class="title is-5">Title 3</h2>
+        <footer>
+          <p>Author</p>
+          <p>Date</p>
+        </footer> 
+      </div>
+		</article>
+
+		<article class="media">
+      <figure class="image">
+				<img src="https://fakeimg.pl/100x100/f0f0f0/">
+			</figure>
+      <div class="media-content">
+        <h2 class="title is-5">Title 3</h2>
+        <footer>
+          <p>Author</p>
+          <p>Date</p>
+        </footer> 
+      </div>
+		</article>
+		
+	</section>
+<!-- top center -->
+<!-- top right -->
+	<section class="column ">
+
+		<article>
+			<figure class="image">
+				<img src="https://fakeimg.pl/350x150/f0f0f0/">
+			</figure>
+			<h2 class="title is-4">Title 3</h2>
+			<h3 class="subtitle is-6">Subtitle 5</h3>
+			<footer>
+				<p>Author</p>
+				<p>Date</p>
+			</footer>
+		</article>
+
+	</section>
+<!-- top right -->
+</section>
+<!-- top -->
+<hr>
+<!-- middle -->
+<section class="columns">
+<!-- middle left -->
+	<section class="column is-8">
+
+		<% @stories.each do |story| %>
+
+			<article class="media">
+				<div class="media-content">
+					<h2 class="title"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black is-size-4' %></h2>
+					<h3 class="content"><%= story.content %></h3>
+					<footer>
+						<p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-black is-size-6' %></p>
+						<p><%= story.created_at.strftime("發表於 %Y/%m/%d") %></p>
+					</footer>
+				</div>
+
+				<figure class="image media-right">
+					<img src="https://fakeimg.pl/155x125/f0f0f0/">
+				</figure>
+			</article>
+			
+		<% end %>
+
+	</section>
+<!-- middle left -->
+<!-- middle right -->
+	<section class="column is-4">
+
+		<article class="media">
+			<figure class="image media-left">
+				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
+			</figure>
+			<div class="media-content">
+				<h2 class="title is-4">Title 3</h2>
+				<footer>
+					<p>Author</p>
+					<p>Date</p>
+				</footer>
+			</div>
+		</article>
+
+		<article class="media">
+			<figure class="image media-left">
+				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
+			</figure>
+			<div class="media-content">
+				<h2 class="title is-4">Title 3</h2>
+				<footer>
+					<p>Author</p>
+					<p>Date</p>
+				</footer>
+			</div>
+		</article>
+
+		<article class="media">
+			<figure class="image media-left">
+				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
+			</figure>
+			<div class="media-content">
+				<h2 class="title is-4">Title 3</h2>
+				<footer>
+					<p>Author</p>
+					<p>Date</p>
+				</footer>
+			</div>
+		</article>
+
+		<article class="media">
+			<figure class="image media-left">
+				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
+			</figure>
+			<div class="media-content">
+				<h2 class="title is-4">Title 3</h2>
+				<footer>
+					<p>Author</p>
+					<p>Date</p>
+				</footer>
+			</div>
+		</article>
+
+	</section>
+<!-- middle right -->
+</section>
+<!-- middle -->
