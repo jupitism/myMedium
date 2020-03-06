@@ -1,4 +1,9 @@
 class Story < ApplicationRecord
+  belongs_to :user
+  validates :title, presence: true
+
+  default_scope { where(deleted_at: nil) }
+
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
 
@@ -19,11 +24,6 @@ class Story < ApplicationRecord
       transitions from: :published, to: :draft
     end
   end
-
-  belongs_to :user
-  validates :title, presence: true
-
-  default_scope { where(deleted_at: nil) }
 
   def destroy
     update(deleted_at: Time.now)
