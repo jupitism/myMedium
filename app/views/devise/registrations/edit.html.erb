@@ -14,6 +14,14 @@
 
   <div class="field">
     <div class="control">
+      <%= f.label :avatar, "大頭照", class: "label" %>
+      <%= f.file_field :avatar %>
+    </div>
+    <%= avatar(current_user) %>
+  </div>
+  
+  <div class="field">
+    <div class="control">
       <%= f.label :intro, "使用者簡介", class: "label" %>
       <%= f.text_area :intro, class: 'textarea', rows: '5' %>
     </div>

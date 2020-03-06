@@ -25,6 +25,7 @@ gem 'devise', '~> 4.2'
 gem 'aasm', '~> 4.11'
 gem 'friendly_id', '~> 5.1'
 gem 'babosa', '~> 1.0', '>= 1.0.2'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
