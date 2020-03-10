@@ -1,3 +1,88 @@
-// Place all the styles related to the stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.story-content {
+
+    .title{
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+        color: black;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+    
+        .avatar {
+            border-radius: 50%;
+        }
+    
+        .username {
+            margin-left: 1em;
+        }
+    
+        .follow-button {
+            margin: 0 1em;
+            border-radius: 3px;
+            color: darkgray;
+            padding: 1px 8px;
+            border: solid darkgray 1px;
+    
+            &:hover {
+                background-color: darkgray;
+                color: white;
+            }
+        }
+    }
+    
+    .story-cover {
+        margin: 1em 0;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .content {
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.2em;
+        color: black;
+
+        footer {
+            font-size: 0.8em;
+        }
+    }
+
+    .comments {
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .comment-editor {
+            textarea {
+                margin: 1em 0;
+            }
+        }
+
+        .comment {
+            margin: 1em 0;
+
+            .comment-profile {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1em;
+
+                .avatar {
+                    border-radius: 50%;
+                }
+            
+                .username {
+                    margin-left: 1em;
+                }
+            }
+        }
+    }
+}
+
