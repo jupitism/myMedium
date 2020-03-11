@@ -3,6 +3,14 @@
       <%= form.label :title, '文章標題' %>
       <%= form.text_field :title, class: 'input is-medium' %>
     </div>
+
+    <div class="field">
+      <%= form.label :cover_image, '文章照片' %>
+      <br>
+      <%= form.file_field :cover_image %>
+      <%= image_tag story.cover_image.variant(resize:'1000x800') if story.cover_image.attached? %>
+    </div>
+
     <div class="field">
       <%= form.label :content, '文章內容' %>
       <%= form.text_area :content, class: 'textarea', rows: '10' %>

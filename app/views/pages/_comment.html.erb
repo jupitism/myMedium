@@ -1,0 +1,9 @@
+<article class="box comment">
+	<span class="comment-profile">
+		<%= image_tag comment.user.avatar.variant(resize:'50x50'), class: 'avatar' if comment.user.avatar.attached? %>
+		<span class="username"><%= comment.user.username %></span>
+	</span>
+		<p><%= simple_format(comment.content) %></p>
+</article>
+
+		

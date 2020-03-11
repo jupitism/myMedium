@@ -91,7 +91,7 @@
 			<article class="media">
 				<div class="media-content">
 					<h2 class="title"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black is-size-4' %></h2>
-					<h3 class="content"><%= story.content %></h3>
+					<h3 class="content"><%= strip_tags(story.content).truncate(150) %></h3>
 					<footer>
 						<p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-black is-size-6' %></p>
 						<p><%= story.created_at.strftime("發表於 %Y/%m/%d") %></p>
@@ -99,7 +99,7 @@
 				</div>
 
 				<figure class="image media-right">
-					<img src="https://fakeimg.pl/155x125/f0f0f0/">
+					<%= image_tag story.cover_image.variant(resize:'150x150') if story.cover_image.attached? %>
 				</figure>
 			</article>
 			

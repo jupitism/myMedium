@@ -1,15 +1,19 @@
 class Story < ApplicationRecord
-  belongs_to :user
+  acts_as_paranoid
+
+  # validation
   validates :title, presence: true
 
+  # relationships
+  belongs_to :user
+  has_one_attached :cover_image
+  has_many :comments
+
+  # scopes
   default_scope { where(deleted_at: nil) }
 
   extend FriendlyId
   friendly_id :slug_candidate, use: :slugged
-
-  def normalize_friendly_id(input)
-    input.to_s.to_slug.normalize(transliterations: :russian).to_s
-  end
 
   include AASM
   aasm(column: 'status', no_direct_assignment: true) do
@@ -25,9 +29,14 @@ class Story < ApplicationRecord
     end
   end
 
-  def destroy
-    update(deleted_at: Time.now)
+  # instance method
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
+
+  # def destroy
+  #   update(deleted_at: Time.now)
+  # end
 
   private
   def slug_candidate

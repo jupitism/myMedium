@@ -66,11 +66,13 @@ class StoriesController < ApplicationController
   end
 
   private
-    def find_story
-      @story = current_user.stories.friendly.find(params[:id])
-    end
+  
+  def find_story
+    @story = current_user.stories.friendly.find(params[:id])
+  end
 
-    def story_params
-      params.require(:story).permit(:title, :content)
-    end
+  def story_params
+    params.require(:story).permit(:title, :content, :cover_image)
+  end
+
 end
