@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:create]
   end
 
+  get "/demo", to: 'pages#demo'
+
   root 'pages#index'
 end
