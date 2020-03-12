@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get "@:username/:story_id", to: "pages#show", as: "story_page"
   get "@:username", to: "pages#user", as: "user_page"
 
+  # stories/story_id/clap
   resources :stories do
+    member do
+      post :clap
+    end
+
     resources :comments, only:[:create]
   end
 

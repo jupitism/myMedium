@@ -15,10 +15,10 @@
     <article class="content">
       <p><%= simple_format(@story.content)%></p>
       
-      <footer>
-        <%= link_to "#", class: 'is-size-2 clapButton' do %>
+      <footer data-controller="story">
+        <%= link_to "#", class: 'is-size-3 has-text-primary clapButton', data:{ action:'story#addClap', slug:@story.slug } do %>
           <i class="far fa-hand-spock"></i>
-          <span class="clapCount">0</span>
+          <span class="clapCount" data-target="story.clapCount"><%= @story.clap %></span>
         <% end %>
       </footer>
 
