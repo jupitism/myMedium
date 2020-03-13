@@ -7,18 +7,25 @@ Rails.application.routes.draw do
   get "@:username/:story_id", to: "pages#show", as: "story_page"
   get "@:username", to: "pages#user", as: "user_page"
 
-  # /users/:id/follow
-  resources :users, only:[] do
-    member do
-      post :follow
+  # /api/users/:id/follow
+  namespace :api do
+    resources :users, only:[] do
+      member do
+        post :follow
+      end
     end
   end
 
-  # stories/story_id/clap
-  resources :stories do
-    member do
-      post :clap
+  # /api/stories/story_id/clap
+  namespace :api do
+    resources :stories, only:[] do
+      member do
+        post :clap
+      end
     end
+  end
+
+  resources :stories do
     resources :comments, only:[:create]
   end
 
