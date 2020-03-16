@@ -21,19 +21,40 @@
     
         .username {
             margin-left: 1em;
+            font-size: 1.1em;
         }
     
         .follow-button {
             margin: 0 1em;
             border-radius: 3px;
-            color: darkgray;
+            color: hsl(171, 100%, 41%);
             padding: 1px 8px;
-            border: solid darkgray 1px;
+            border: solid 1px hsl(171, 100%, 41%);
+            background-color: white;
     
             &:hover {
-                background-color: darkgray;
+                background-color: hsl(171, 100%, 41%);
                 color: white;
             }
+        }
+
+        .follow-button-solid {
+            margin: 0 1em;
+            border-radius: 3px;
+            color: white;
+            padding: 1px 8px;
+            border: solid 1px hsl(171, 100%, 41%);
+            background-color: hsl(171, 100%, 41%);
+        }
+
+        .created-at {
+            margin-left: 13em;
+        }
+
+        .bookmark-button {
+            color: hsl(171, 100%, 41%);
+            font-size: 1.3em;
+            margin-left: 1em;
         }
     }
     

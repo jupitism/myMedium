@@ -16,11 +16,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # /api/stories/story_id/bookmark
   # /api/stories/story_id/clap
   namespace :api do
     resources :stories, only:[] do
       member do
         post :clap
+        post :bookmark
       end
     end
   end

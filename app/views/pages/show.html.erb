@@ -6,12 +6,25 @@
     <span class="profile" data-controller = "user">
       <%= image_tag @story.user.avatar.variant(resize:'50x50'), class: 'avatar' if @story.user.avatar.attached? %>
       <span class="username"><%= @story.user.username %></span>
-      <%= link_to "#", class: 'follow-button', data: {action: 'user#follow',
-                                                                user: @story.user.id,
-                                                                target: 'user.followButton'} do %>
-        <% (user_signed_in? && current_user.follow?(@story.user.id))? 'Followed':'Follow' %>
+
+      <!-- follow 功能 -->
+      <% if (user_signed_in? && current_user.follow?(@story.user.id)) %>
+        <%= link_to "Following", "#", class: 'follow-button-solid', data: {action: 'user#follow', user: @story.user.id, target: 'user.followButton'} %>
+      <% else %>
+        <%= link_to "Follow", "#", class: 'follow-button', data: {action: 'user#follow', user: @story.user.id, target: 'user.followButton'} %> 
       <% end %>
-      <p><%= @story.created_at.strftime("發表於 %Y/%m/%d")%></p>
+
+      <p class="created-at"><%= @story.created_at.strftime("%Y/%m/%d")%></p>
+
+      <!-- bookmark 功能 -->
+      <%= link_to "#", class: 'bookmark-button', data: {action: 'user#bookmark', slug: @story.slug } do %>
+        <% if (user_signed_in? && current_user.bookmark?(@story)) %>
+          <i class="fas fa-bookmark", data-target="user.bookmark"></i>
+        <% else %>
+          <i class="far fa-bookmark", data-target="user.bookmark"></i>
+        <% end %>                                             
+      <% end %>
+
     </span>
 
     <%= image_tag @story.cover_image.variant(resize:'1000x800'), class: 'story-cover' if @story.cover_image.attached? %>
