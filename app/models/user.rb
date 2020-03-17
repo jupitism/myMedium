@@ -10,6 +10,18 @@ class User < ApplicationRecord
   # validations
   validates :username, presence: true, uniqueness: true
 
+  # enum
+  enum role: {
+    user: 0,
+    vip_user: 1,
+    platium_user: 2,
+    admin: 3
+  }
+
+  def paid_user?
+    vip_user? or platium_user?
+  end
+
   # 設定user的方法: follow
   def follow?(user)
     follows.exists?(following: user)
