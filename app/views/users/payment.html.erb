@@ -5,10 +5,27 @@
 				<img src="https://fakeimg.pl/50x50/">
 			</figure>
 			<div class="media-content">
-				<p class="title is-5"><%= @payment_type %>（USD <%= @fee %>）</p>
-				<strong>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id leo sed erat dapibus molestie tristique id tortor.
-				</strong>
+				<strong><%= @payment_type %>（USD <%= @fee %>）</strong>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id leo sed erat dapibus molestie tristique id tortor.</p>
+				<script src="https://js.braintreegateway.com/web/dropin/1.22.1/js/dropin.min.js"></script>
+					<div id="dropin-container"></div>
+					<button id="submit-button">Request payment method</button>
+					<script>
+						document.addEventListener('turbolinks:load', function(event){
+							var button = document.querySelector('#submit-button');
+
+							braintree.dropin.create({
+								authorization: '<%= @token %>',
+								container: '#dropin-container'
+							}, function (createErr, instance) {
+								button.addEventListener('click', function () {
+									instance.requestPaymentMethod(function (err, payload) {
+										// Submit payload.nonce to your server
+									});
+								});
+							});
+						})
+					</script>
 			</div>
 		</div>
 	</div>
