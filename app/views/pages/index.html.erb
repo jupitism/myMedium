@@ -1,168 +1,95 @@
 <!-- top -->
-<section class="columns">
+<section class="columns index-top">
 <!-- top left -->
-  <section class="column ">
-
+  <section class="column">
 		<article>
 			<figure class="image">
-				<img src="https://fakeimg.pl/350x150/f0f0f0/">
+				<%= image_tag @popular_stories.first.cover_image, class: 'index-top-image' if @popular_stories.first.cover_image.attached? %>
 			</figure>
-			<h2 class="title is-4">Title 3</h2>
-			<h3 class="subtitle is-6">Subtitle 5</h3>
+			<h2 class="title is-4"><%= link_to @popular_stories.first.title, story_page_path(@popular_stories.first.user.username, @popular_stories.first), class: 'has-text-black is-size-4' %></h2>
+			<h3 class="subtitle is-6"><%= strip_tags(@popular_stories.first.content).truncate(100) %></h3>
 			<footer>
-				<p>Author</p>
-				<p>Date</p>
+				<p><%= link_to @popular_stories.first.user.username, user_page_path(@popular_stories.first.user.username), class: 'has-text-black is-size-6' %></p>
+				<p class="is-size-7"><%= @popular_stories.first.created_at.strftime("%Y/%m/%d") %></p>
 			</footer>
 		</article>
-
   </section>
 <!-- top left -->
 <!-- top center -->
   <section class="column">
-
+		<% @update_stories.each do |story| %>
     <article class="media">
-      <figure class="image">
-				<img src="https://fakeimg.pl/100x100/f0f0f0/">
+      <figure class="image media-left">
+				<%= image_tag story.cover_image, class: 'index-top-center-image' if story.cover_image.attached? %>
 			</figure>
       <div class="media-content">
-        <h2 class="title is-5">Title 3</h2>
+				<h2 class="title is-5"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black is-size-4' %></h2>
         <footer>
-          <p>Author</p>
-          <p>Date</p>
+          <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-black is-size-6' %></p>
+          <p class="is-size-7"><%= story.created_at.strftime("%Y/%m/%d") %></p>
         </footer> 
       </div>
 		</article>
-
-		<article class="media">
-      <figure class="image">
-				<img src="https://fakeimg.pl/100x100/f0f0f0/">
-			</figure>
-      <div class="media-content">
-        <h2 class="title is-5">Title 3</h2>
-        <footer>
-          <p>Author</p>
-          <p>Date</p>
-        </footer> 
-      </div>
-		</article>
-
-		<article class="media">
-      <figure class="image">
-				<img src="https://fakeimg.pl/100x100/f0f0f0/">
-			</figure>
-      <div class="media-content">
-        <h2 class="title is-5">Title 3</h2>
-        <footer>
-          <p>Author</p>
-          <p>Date</p>
-        </footer> 
-      </div>
-		</article>
-		
+		<% end %>
 	</section>
 <!-- top center -->
 <!-- top right -->
-	<section class="column ">
-
+	<section class="column">
 		<article>
 			<figure class="image">
-				<img src="https://fakeimg.pl/350x150/f0f0f0/">
+				<%= image_tag @popular_stories.second.cover_image, class: 'index-top-image' if @popular_stories.second.cover_image.attached? %>
 			</figure>
-			<h2 class="title is-4">Title 3</h2>
-			<h3 class="subtitle is-6">Subtitle 5</h3>
+			<h2 class="title is-4"><%= link_to @popular_stories.second.title, story_page_path(@popular_stories.second.user.username, @popular_stories.second), class: 'has-text-black is-size-4' %></h2>
+			<h3 class="subtitle is-6"><%= strip_tags(@popular_stories.second.content).truncate(50) %></h3>
 			<footer>
-				<p>Author</p>
-				<p>Date</p>
+				<p><%= link_to @popular_stories.second.user.username, user_page_path(@popular_stories.second.user.username), class: 'has-text-black is-size-6' %></p>
+				<p class="is-size-7"><%= @popular_stories.second.created_at.strftime("%Y/%m/%d") %></p>
 			</footer>
 		</article>
-
 	</section>
 <!-- top right -->
 </section>
 <!-- top -->
 <hr>
 <!-- middle -->
-<section class="columns">
+<section class="columns index-middle">
 <!-- middle left -->
 	<section class="column is-8">
-
 		<% @stories.each do |story| %>
-
 			<article class="media">
 				<div class="media-content">
-					<h2 class="title"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black is-size-4' %></h2>
+					<h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black' %></h2>
 					<h3 class="content"><%= strip_tags(story.content).truncate(150) %></h3>
 					<footer>
 						<p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-black is-size-6' %></p>
-						<p><%= story.created_at.strftime("發表於 %Y/%m/%d") %></p>
+						<p class="is-size-7"><%= story.created_at.strftime("%Y/%m/%d") %></p>
 					</footer>
 				</div>
-
 				<figure class="image media-right">
-					<%= image_tag story.cover_image.variant(resize:'150x150') if story.cover_image.attached? %>
+					<%= image_tag story.cover_image, class: 'index-middle-image' if story.cover_image.attached? %>
 				</figure>
 			</article>
-			
 		<% end %>
-
 	</section>
 <!-- middle left -->
 <!-- middle right -->
-	<section class="column is-4">
-
-		<article class="media">
-			<figure class="image media-left">
-				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
-			</figure>
-			<div class="media-content">
-				<h2 class="title is-4">Title 3</h2>
-				<footer>
-					<p>Author</p>
-					<p>Date</p>
-				</footer>
-			</div>
-		</article>
-
-		<article class="media">
-			<figure class="image media-left">
-				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
-			</figure>
-			<div class="media-content">
-				<h2 class="title is-4">Title 3</h2>
-				<footer>
-					<p>Author</p>
-					<p>Date</p>
-				</footer>
-			</div>
-		</article>
-
-		<article class="media">
-			<figure class="image media-left">
-				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
-			</figure>
-			<div class="media-content">
-				<h2 class="title is-4">Title 3</h2>
-				<footer>
-					<p>Author</p>
-					<p>Date</p>
-				</footer>
-			</div>
-		</article>
-
-		<article class="media">
-			<figure class="image media-left">
-				<img src="https://fakeimg.pl/55x55/f0f0f0/" class="is-rounded">
-			</figure>
-			<div class="media-content">
-				<h2 class="title is-4">Title 3</h2>
-				<footer>
-					<p>Author</p>
-					<p>Date</p>
-				</footer>
-			</div>
-		</article>
-
-	</section>
+	
+		<section class="column is-4">
+			<div class="title middle-right-title is-3">Popular Stories</div>
+			<% @popular_stories.each_with_index do |story, i| %>
+				<article class="media">
+					<div class="media-left number"><%= i+1 %></div>
+					<div class="media-content">
+						<h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-black is-size-4' %></h2>
+						<footer>
+							<p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-black is-size-6' %></p>
+							<p class="is-size-7"><%= story.created_at.strftime("%Y/%m/%d") %></p>
+						</footer>
+					</div>
+				</article>
+			<% end %>			
+		</section>
+	</div>
 <!-- middle right -->
 </section>
 <!-- middle -->

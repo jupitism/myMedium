@@ -29,6 +29,7 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'paranoia', '~> 2.1', '>= 2.1.5'
 gem 'figaro', '~> 1.0'
 gem "braintree", "~> 2.101.0"
+gem 'activesupport', '~> 6.0', '>= 6.0.2.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -59,4 +60,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def index
     @stories = Story.published.with_attached_cover_image.order(created_at: :desc).includes(:user)
+    @popular_stories = Story.published.with_attached_cover_image.order(clap: :desc).includes(:user)
+    @update_stories = Story.published.with_attached_cover_image.order(updated_at: :desc).first(3)
   end
 
   def show

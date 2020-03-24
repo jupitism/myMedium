@@ -4,7 +4,7 @@
     <h1 class="title"><%= @story.title %></h1>
 
     <span class="profile" data-controller = "user">
-      <%= image_tag @story.user.avatar.variant(resize:'50x50'), class: 'avatar' if @story.user.avatar.attached? %>
+      <%= image_tag @story.user.avatar, class: 'avatar' if @story.user.avatar.attached? %>
       <span class="username"><%= @story.user.username %></span>
 
       <!-- follow 功能 -->
@@ -30,7 +30,7 @@
     <%= image_tag @story.cover_image.variant(resize:'1000x800'), class: 'story-cover' if @story.cover_image.attached? %>
     
     <article class="content">
-      <p><%= simple_format(@story.content)%></p>
+      <p><%= @story.content.html_safe %></p>
       
       <footer data-controller="story">
         <%= link_to "#", class: 'is-size-3 has-text-primary clapButton', data:{ action:'story#addClap', slug:@story.slug } do %>
