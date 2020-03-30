@@ -22,3 +22,21 @@
   height: 300px;
   object-fit: cover;
 }
+
+.index-top {
+  .index-top-image {
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 1em;
+  }
+  .index-top-center-image {
+    width: 100px;
+  }
+}
+
+.index-middle {
+  .index-middle-image {
+    width: 200px;
+  }
+}
